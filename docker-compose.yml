@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   islb:
+    container_name: islb
     image: pionwebrtc/ion:latest-islb
     build:
       dockerfile: ./docker/islb.Dockerfile
@@ -15,6 +16,7 @@ services:
       - ionnet
 
   sfu:
+    container_name: sfu
     image: pionwebrtc/ion:latest-sfu
     build:
       dockerfile: ./docker/sfu.Dockerfile
@@ -31,6 +33,7 @@ services:
       - ionnet
 
   signal:
+    container_name: signal
     image: pionwebrtc/ion:latest-signal
     build:
       dockerfile: ./docker/signal.Dockerfile
@@ -41,11 +44,12 @@ services:
       - 5551:5551
     depends_on:
       - islb
-      - app-room
+      - room
     networks:
       - ionnet
 
-  app-room:
+  room:
+    container_name: room
     image: pionwebrtc/ion:latest-app-room
     build:
       dockerfile: ./docker/app-room.Dockerfile
@@ -60,6 +64,7 @@ services:
       - ionnet
 
   nats:
+    container_name: nats
     image: nats
     ports:
       - 4222:4222
@@ -67,6 +72,7 @@ services:
       - ionnet
 
   redis:
+    container_name: redis
     image: redis:6.0.9
     ports:
       - 6379:6379

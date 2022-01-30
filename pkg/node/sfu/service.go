@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pion/ion-log"
 	"github.com/bep/debounce"
+	log "github.com/pion/ion-log"
 	ion_sfu_log "github.com/pion/ion-sfu/pkg/logger"
 	"github.com/pion/ion-sfu/pkg/middlewares/datachannel"
 	"github.com/pion/ion-sfu/pkg/sfu"
